@@ -1,0 +1,4 @@
+{
+  "watchPath" : "test/testdir",
+  "logPath" : "test/logdir"
+}

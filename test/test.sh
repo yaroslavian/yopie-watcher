@@ -6,10 +6,6 @@ else
   TESTDIR=$1
 fi
 
-# echo $TESTDIR
-
-# ls $TESTDIR
-
 touch $TESTDIR/1.txt
 echo 'add some content' > $TESTDIR/1.txt
 touch $TESTDIR/2.txt
@@ -28,8 +24,5 @@ mv --verbose $TESTDIR/3333 $TESTDIR/3334
  rm -rvf $TESTDIR/*
  # rm -rvf $TESTDIR
  # mkdir --verbose $TESTDIR
-
-
-##SOME COMMENTS FROM NOTEBOOK!!!
 
 #rmdir -rvf testdir/
