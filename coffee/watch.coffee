@@ -1,6 +1,6 @@
 lib = require './lib.js'
 
-watch = (watchPath) ->
+watch = (watchPath, logPath) ->
 
   spawn = (require('child_process')).spawn
   options = ['-mr', '--timefmt', '%d-%b-%Y %H:%M', '--format', '{"directory":"%w", "filename":"%f", "event":"%_e", "date":"%T"}' , watchPath]
@@ -12,7 +12,7 @@ watch = (watchPath) ->
 
     for element in str
       if element
-        lib.formate element
+        lib.formate element, logPath
 
 
   watcher.stderr.on 'data', (data) ->

@@ -4,11 +4,12 @@
 
   fs = require('fs');
 
-  formate = function(data) {
-    var result;
+  formate = function(data, logPath) {
+    var logFile, result;
     data = JSON.parse(data);
     result = data.directory + "\t" + data.filename + "\t" + data.event + "\t" + data.date + "\n";
-    return fs.appendFile('watcher-log.txt', result, function(err) {
+    logFile = logPath + "/watcher-log.txt";
+    return fs.appendFile(logFile, result, function(err) {
       if (err) {
         throw err;
       }

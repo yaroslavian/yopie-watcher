@@ -1,12 +1,18 @@
-# fs=require
+fs = require 'fs'
 watch = (require './watch.js').watch
 
-# path = require 'path'
+watchPath = process.argv[2] || throw "WATCH FOLDER IS NOT DEFINED"
+logPath = process.argv[3] || throw "LOG FOLDER IS NOT DEFINED"
 
-# watchPath = process.argv[2] || "/home/sunset/coding/nodejs/filewatcher/ver2/testdir"
-# if not process.argv[2] then throw "ERRRRRRRRRRROR!!!"
+setLogFolder = (logPath, cb) ->
+  fs.stat logPath, (err, stats) ->
+    if err
+      throw "ERROR: Log directory does not exist --> #{err}"
+    else if not stats.isDirectory()
+      throw "ERROR: #{logPath} is not a directory"
+    else
+      cb(watchPath, logPath)
 
-watchPath = process.argv[2] || throw "НЕ УКАЗАНА ДИРРЕКТОРИЯ ДЛЯ СЛЕЖЕНИЯ"
+setLogFolder logPath, watch
 
-
-watch(watchPath)
+# watch watchPath, logPath
