@@ -1,4 +1,4 @@
-lib = require './lib.js'
+logger = require './logger.js'
 
 watch = (watchPath, logPath) ->
 
@@ -12,7 +12,7 @@ watch = (watchPath, logPath) ->
 
     for element in str
       if element
-        lib.formate element, logPath
+        logger.writeLog element, logPath
 
 
   watcher.stderr.on 'data', (data) ->
