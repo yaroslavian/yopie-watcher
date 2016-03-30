@@ -1,5 +1,5 @@
 # yopie-watcher
-Simple parser inotifywait watcher written by nodejs
+Simple parser "inotifywait" watcher written using nodejs
 
 This tool is just spawning "inotifywait" process for specified directory and then parsing all received data. It was made for self-usage on web server, but if it could be useful, you're always welcome.
 
