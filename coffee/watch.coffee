@@ -3,7 +3,7 @@ logger = require './logger.js'
 watch = (watchPath, logPath) ->
 
   spawn = (require('child_process')).spawn
-  options = ['-mr', '--timefmt', '%d-%b-%Y %H:%M', '--format', '{"directory":"%w", "filename":"%f", "event":"%_e", "date":"%T"}' , watchPath]
+  options = ['-mr', '--timefmt', '%d-%b-%Y %H:%M:%S', '--format', '{"directory":"%w", "filename":"%f", "event":"%_e", "date":"%T"}' , watchPath]
   watcher = spawn 'inotifywait', options
 
   watcher.stdout.on 'data', (data) ->
