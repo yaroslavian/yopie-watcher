@@ -1,6 +1,6 @@
 logger = require './logger.js'
 
-watch = (watchPath, logPath) ->
+watch = (watchPath, logPath, critFTypes) ->
 
   spawn = (require('child_process')).spawn
   options = ['-mr', '--timefmt', '%d-%b-%Y %H:%M:%S', '--format', '{"directory":"%w", "filename":"%f", "event":"%_e", "date":"%T"}' , watchPath]
@@ -12,7 +12,7 @@ watch = (watchPath, logPath) ->
 
     for element in str
       if element
-        logger.writeLog element, logPath
+        logger.writeLog element, logPath, critFTypes
 
 
   watcher.stderr.on 'data', (data) ->

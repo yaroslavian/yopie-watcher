@@ -1,16 +1,33 @@
 fs = require 'fs'
 
-isCritical = (data) ->
+checkFileType = (types, filename) ->
+  # console.log types
+  res = no
+  for type in types
+    if !res
+      # console.log type
+      reg = "\\.#{type}$"
+      flags = 'gi'
+      # console.log "reg = /#{reg}/#{flags}"
+      reg = new RegExp(reg, flags)
+      # console.log "!!! --> #{filename}" if filename.search(reg)>=0
+      if i=filename.search(reg)>=0
+        res = yes
+      else res = no
+
+  return res
+
+isCritical = (data, critFTypes) ->
   event = data.event
   filename = data.filename
 
   if (event == "CREATE" || event == "MODIFY" || event == "DELETE" || (event.search(/MOVE/)>=0) )
-    if (filename.search(/\.php$/)>=0 || filename.search(/\.html$/)>=0 || filename.search(/\.js$/)>=0)
-      return true
-      
+    return checkFileType(critFTypes, filename)
+
+
   else return false
 
-writeLog = (data, logPath) ->
+writeLog = (data, logPath, critFTypes) ->
 
   data = JSON.parse(data)
 
@@ -19,7 +36,7 @@ writeLog = (data, logPath) ->
   logFile = "#{logPath}/watcher.log"
   criticalLogFile = "#{logPath}/critical.log"
 
-  if isCritical(data)
+  if isCritical(data, critFTypes)
     fs.appendFile criticalLogFile, result, (err) ->
       if err then throw err
 

@@ -1,4 +1,5 @@
 {
   "watchPath" : "test/testdir",
-  "logPath" : "test/logdir"
+  "logPath" : "test/logdir",
+  "criticalFileTypes": ["php", "html", "js"]
 }

@@ -4,7 +4,7 @@
 
   logger = require('./logger.js');
 
-  watch = function(watchPath, logPath) {
+  watch = function(watchPath, logPath, critFTypes) {
     var options, spawn, watcher;
     spawn = (require('child_process')).spawn;
     options = ['-mr', '--timefmt', '%d-%b-%Y %H:%M:%S', '--format', '{"directory":"%w", "filename":"%f", "event":"%_e", "date":"%T"}', watchPath];
@@ -17,7 +17,7 @@
       for (i = 0, len = str.length; i < len; i++) {
         element = str[i];
         if (element) {
-          results.push(logger.writeLog(element, logPath));
+          results.push(logger.writeLog(element, logPath, critFTypes));
         } else {
           results.push(void 0);
         }
