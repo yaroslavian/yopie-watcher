@@ -8,6 +8,8 @@ fi
 
 touch $TESTDIR/1.txt
 echo 'add some content' > $TESTDIR/1.txt
+touch $TESTDIR/1.php
+echo 'add some content' > $TESTDIR/1.php
 touch $TESTDIR/2.txt
 echo 'add some content' > $TESTDIR/2.txt
 echo 'append some more content' >> $TESTDIR/2.txt

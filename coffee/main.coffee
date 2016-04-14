@@ -1,7 +1,7 @@
 fs = require 'fs'
 watch = (require './watch.js').watch
 
-
+#checking arguments
 if process.argv[2]
   if process.argv[2] == "--config"
     if process.argv[3]

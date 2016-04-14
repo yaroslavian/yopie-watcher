@@ -1,4 +1,5 @@
 fs = require 'fs'
+checkDate = (require "./datechecker.js").checkDate
 
 checkFileType = (types, filename) ->
   # console.log types
@@ -37,6 +38,10 @@ writeLog = (data, logPath, critFTypes) ->
   criticalLogFile = "#{logPath}/critical.log"
 
   if isCritical(data, critFTypes)
+    date = do checkDate
+    if date!=null
+      result = "\n---------#{date}----------\n#{result}"
+
     fs.appendFile criticalLogFile, result, (err) ->
       if err then throw err
 
