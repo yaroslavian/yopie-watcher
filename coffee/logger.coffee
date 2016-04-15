@@ -1,4 +1,5 @@
 fs = require 'fs'
+checkUser = (require './usercheck.js').checkUser
 checkDate = (require "./datechecker.js").checkDate
 
 checkFileType = (types, filename) ->
@@ -32,7 +33,7 @@ writeLog = (data, logPath, critFTypes) ->
 
   data = JSON.parse(data)
 
-  result = "#{data.directory}\t#{data.filename}\t#{data.event}\t#{data.date}\n"
+  result = "#{data.directory}\t#{data.filename}\t#{data.event}\t#{data.date}"
 
   logFile = "#{logPath}/watcher.log"
   criticalLogFile = "#{logPath}/critical.log"
@@ -41,6 +42,9 @@ writeLog = (data, logPath, critFTypes) ->
     date = do checkDate
     if date!=null
       result = "\n---------#{date}----------\n#{result}"
+    userName = checkUser("#{data.directory}/#{data.filename}")
+    if userName then result += " #{userName}\n"
+    else result+="\n"
 
     fs.appendFile criticalLogFile, result, (err) ->
       if err then throw err
