@@ -11,8 +11,7 @@
     watcher = spawn('inotifywait', options);
     watcher.stdout.on('data', function(data) {
       var element, i, len, results, str;
-      str = data.toString();
-      str = str.split("\n");
+      str = data.toString().split("\n");
       results = [];
       for (i = 0, len = str.length; i < len; i++) {
         element = str[i];
@@ -25,7 +24,7 @@
       return results;
     });
     watcher.stderr.on('data', function(data) {
-      return console.log("ERROR! --> " + data);
+      return console.log("\n --> " + data + "\n");
     });
     return watcher.on("close", function() {
       return console.log("\n ---> EXIT --->\n");

@@ -7,16 +7,13 @@ watch = (watchPath, logPath, critFTypes) ->
   watcher = spawn 'inotifywait', options
 
   watcher.stdout.on 'data', (data) ->
-    str = data.toString()
-    str = str.split "\n"
+    str = data.toString().split "\n"
 
     for element in str
-      if element
-        logger.writeLog element, logPath, critFTypes
-
+      if element then logger.writeLog element, logPath, critFTypes
 
   watcher.stderr.on 'data', (data) ->
-    console.log "ERROR! --> #{data}"
+    console.log "\n --> #{data}\n"
 
   watcher.on "close", ->
     console.log "\n ---> EXIT --->\n"

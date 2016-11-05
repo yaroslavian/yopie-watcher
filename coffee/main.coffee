@@ -5,10 +5,13 @@ watch = (require './watch.js').watch
 if process.argv[2]
   if process.argv[2] == "--config"
     if process.argv[3]
-      config = require "./#{process.argv[3]}"
-      watchPath = config.watchPath || throw "undefined watch directory in config file"
-      logPath = config.logPath || throw "undefined log directory in config file"
-      critFTypes = config.criticalFileTypes || undefined
+      try
+        if config = require "./#{process.argv[3]}"
+          watchPath = config.watchPath || throw "undefined watch directory in config file"
+          logPath = config.logPath || throw "undefined log directory in config file"
+          critFTypes = config.criticalFileTypes || undefined
+      catch e
+        throw "Invalid config file --> " + e
     else throw "CONFIG FILE IS MISSING"
   else
     watchPath = process.argv[2] || throw "WATCH FOLDER IS NOT DEFINED"
