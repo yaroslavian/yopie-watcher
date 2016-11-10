@@ -15,3 +15,5 @@ This tool is just spawning **[inotifywait](https://linux.die.net/man/1/inotifywa
 ```shell
   nodejs main.js --config path_to_configuration_file.json
 ```
+___
+Tested in combination with **[pm2](https://github.com/Unitech/pm2)** as a process manager.
