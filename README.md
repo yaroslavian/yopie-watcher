@@ -3,11 +3,11 @@ Simple parser **[inotifywait](https://linux.die.net/man/1/inotifywait)** watcher
 
 This tool is just spawning **[inotifywait](https://linux.die.net/man/1/inotifywait)** process for specified directory and then parsing all received data. It was made for self-usage on web server, but if it could be useful, you're always welcome.
 
-###REQUIREMENTS
+### REQUIREMENTS
 
 **[inotify-tools](https://github.com/rvoicilas/inotify-tools/wiki)** and **[inotifywait](https://linux.die.net/man/1/inotifywait)** packages required.
 
-###USAGE
+### USAGE
 ```shell
   nodejs main.js path_to_watched_directory path_to_logs_directory
 ```
