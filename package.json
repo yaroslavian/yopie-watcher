@@ -1,0 +1,25 @@
+{
+  "name": "yopie-watcher",
+  "version": "1.0.0",
+  "description": "Simple parser \"inotifywait\" watcher written using nodejs",
+  "main": "main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaroslavian/yopie-watcher.git"
+  },
+  "keywords": [
+    "yopie-watcher"
+  ],
+  "author": "@yaroslavian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yaroslavian/yopie-watcher/issues"
+  },
+  "homepage": "https://github.com/yaroslavian/yopie-watcher#readme"
+}
