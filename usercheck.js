@@ -3,7 +3,7 @@ var fs = require('fs'),
     checkUser = (filename) => {
         var result = '',
             spawn = childProcess.spawnSync,
-            options = [filename, '--format=uid %u - %U'],
+            options = [filename, '--format="%u / %U"'],
             userCheck = spawn('stat', options);
             
         result = userCheck.stdout.toString().replace("\n", "");
